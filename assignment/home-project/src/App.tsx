@@ -1,11 +1,9 @@
-import { useState } from 'react'
+import CounterList from './CounterList'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
+      <CounterList />
     </>
   )
 }
