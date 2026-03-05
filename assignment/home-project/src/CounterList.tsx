@@ -1,44 +1,41 @@
 import { useState } from "react";
 
-export default function CounterList () {
-  const [count, setCount] = useState<number[]>([]);
-  const displayNumbers = 
-      <>
-        <ul>
-          {
-            count.map((el, index) => {
-              return <li key={index}>{el}</li>
-            })
-          }
-        </ul>
-      </>
+export default function CounterList() {
+  const [counts, setCounts] = useState<number[]>([]);
+  const displayNumbers = counts.map((el, index) => {
+    return <li key={index}>{el}</li>;
+  });
   return (
     <>
       <button
         onClick={() => {
-          const numbers = [...count];
-          const length = count.length;
-          console.log("==========> array length: ", length);
-          numbers.push(length)
-          console.log("!!!--------- count: ", count);
-          console.log("!!!--------- numbers: ", numbers);
-          setCount(numbers);
+          console.log("!!!--------- counts: ", counts);
+          const newNumbers = [...counts, counts.length];
+          console.log("!!!--------- numbers: ", newNumbers);
+          setCounts(newNumbers);
         }}
-        style={{marginRight: "5px"}}
+        style={{ marginRight: "5px" }}
       >
         Click to start adding numbers to the array
       </button>
       <button
         onClick={() => {
-          const numbers = [...count];
-          numbers[numbers.length-1] ++;
-          setCount(numbers);
+          const oldNumber = counts[counts.length - 1];
+          const newNumber = oldNumber + 1;
+
+          const reversed = counts.reverse();
+          const [first, ...rest] = reversed;
+          void first;
+          const oldNumbers = rest.reverse();
+
+          const newNumbers = [...oldNumbers, newNumber];
+          setCounts(newNumbers);
         }}
-        style={{marginLeft: "5px"}}
+        style={{ marginLeft: "5px" }}
       >
         Increment the last number
       </button>
-      {displayNumbers}
+      <ul>{displayNumbers}</ul>
     </>
-  )
+  );
 }
