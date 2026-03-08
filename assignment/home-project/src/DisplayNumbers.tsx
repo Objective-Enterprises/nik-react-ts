@@ -1,5 +1,8 @@
 export default function DisplayNumbers(
-    { numbers } : { numbers: React.ReactNode[];}
-) { 
-  return <ul>{numbers}</ul> 
+    { numbers } : { numbers: number[];}
+) {
+  const liItems = numbers.map((el, index) => {
+    return <li key={index}>{el}</li>;
+  });
+  return <ul>{liItems}</ul> 
 }
