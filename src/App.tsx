@@ -1,16 +1,18 @@
-import Counter from "./Counter"
-import Welcome from "./Welcome"
+import { useState } from "react"
+import AddValueForm from "./AddValueForm"
+import List from "./List"
 
 export default function App () {
-  const result = 342987234 * 234987234
+  const [values, setValues] = useState(['A', 'B', 'C', 'D', 'E', 'A'])
+  function addValue (value: string) {
+    const newValues = [...values, value]
+    setValues(newValues)
+  }
   return (
     <>
       <h1>App</h1>
-      <Counter />
-      <div>342987234 * 234987234 = {result}</div>
-      <Welcome person="Dorothy" punctuation="!"/>
-      <Welcome greeting="Hello" person="Tallulah"/>
-      <Welcome person="Zelda" />
+      <AddValueForm addValue={addValue} />
+      <List values={values} />
     </>
   )
 }
