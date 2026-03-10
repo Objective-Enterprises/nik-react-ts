@@ -11,6 +11,24 @@ export default function CounterList() {
     setCounts(newCounts);
   }
 
+  function removeCount(indexToRemove: number) {
+    const newCounts = counts.filter((_item, index) => {
+      return index !== indexToRemove;
+    }) 
+    setCounts(newCounts);
+  }
+
+  function updateCount(indexToUpdate: number, newCount: number) {
+    const newCounts = counts.map((item, index) => {
+      if (indexToUpdate !== index) {
+        return item
+      }
+      return newCount
+    })
+    
+    setCounts(newCounts);
+  }
+
   function resetCounts () {
     setCounts([]);
   }
@@ -42,3 +60,18 @@ export default function CounterList() {
     </>
   );
 }
+
+
+// implement removeCount
+// for each count (item in the list) there should be a button next to it
+// that says "Remove"
+
+// implement updateCount
+// for each count there should be an INPUT and the BUTTON that says "Update"
+
+// hint:
+// a new CountItem component is required inside the DisplayNumber
+
+// inheritance:
+// CounterList --> DisplayNumbers --> CountItem
+
