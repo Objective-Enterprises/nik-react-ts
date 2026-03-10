@@ -1,26 +1,20 @@
-type AddCountFormProps = {
-  counts: number[];
-  setCounts: (numbers: number[]) => void;
-  startNumber: string;
-  setStartNumber: (number: string) => void;
+import { useState } from "react";
+interface AddCountFormProps {
+  addCount: (number: number) => void;
+  incrementLast: () => void;
 }
 
-export default function AddCountForm (
-  { counts, 
-    setCounts,
-    startNumber, 
-    setStartNumber 
-  }: AddCountFormProps
-) {
+export default function AddCountForm ({
+  addCount,
+  incrementLast
+}: AddCountFormProps) {
+  const [startNumber, setStartNumber] = useState('');
   return (
     <form onSubmit={
       e => {
         e.preventDefault()
-        console.log("!!!--------- counts: ", counts);
         if (startNumber) {
-          const newNumbers = [...counts, Number(startNumber)];
-          console.log("!!!--------- numbers: ", newNumbers);
-          setCounts(newNumbers);
+          addCount(Number(startNumber));
           setStartNumber('');
         } else {
           alert("⚠️ Specify a number to add!");
@@ -44,22 +38,7 @@ export default function AddCountForm (
       </button>
       <button
         type="button"
-        onClick={() => {
-          if (counts.length === 0) {
-            alert("⚠️ Add at least one number to the array!")
-          } else {
-            const oldNumber = counts[counts.length - 1];
-            const newNumber = oldNumber + 1;
-
-            const reversed = counts.reverse();
-            const [first, ...rest] = reversed;
-            void first;
-            const oldNumbers = rest.reverse();
-
-            const newNumbers = [...oldNumbers, newNumber];
-            setCounts(newNumbers);
-          }
-        }}
+        onClick={incrementLast}
         style={{ marginLeft: "5px" }}
       >
         Increment the last number

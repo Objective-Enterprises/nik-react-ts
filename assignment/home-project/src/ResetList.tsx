@@ -1,10 +1,14 @@
-export default function ResetList(
-  { setCounts } : {setCounts: (numbers: number[]) => void;}
-) {
+interface ResetListProps {
+  resetCounts : () => void
+}
+
+export default function ResetList({
+  resetCounts
+}: ResetListProps) {
   return (
     <button 
       type="button"
-      onClick={() => setCounts([])}
+      onClick={resetCounts}
       style={{marginTop: "10px", border: "4px solid red"}}
     >
       ⚠️ Remove all numbers ⚠️

@@ -5,16 +5,39 @@ import ResetList from "./ResetList";
 
 export default function CounterList() {
   const [counts, setCounts] = useState<number[]>([]);
-  const [startNumber, setStartNumber] = useState('');
+
+  function addCount(number: number) {
+    const newCounts = [...counts, Number(number)];
+    setCounts(newCounts);
+  }
+
+  function resetCounts () {
+    setCounts([]);
+  }
+
+  function incrementLast() {
+    if (counts.length === 0) {
+      alert("⚠️ Add at least one number to the array!")
+    } else {
+      const oldNumber = counts[counts.length - 1];
+      const newNumber = oldNumber + 1;
+
+      const reversed = counts.reverse();
+      const [first, ...rest] = reversed;
+      void first;
+      const oldNumbers = rest.reverse();
+      const newNumbers = [...oldNumbers, newNumber];
+      setCounts(newNumbers);
+    }
+  }
+
   return (
     <>
       <AddCountForm
-        counts={counts}
-        setCounts={setCounts}
-        startNumber={startNumber}
-        setStartNumber={setStartNumber}
+        addCount={addCount}
+        incrementLast={incrementLast}
       />
-      <ResetList setCounts={setCounts}/>
+      <ResetList resetCounts={resetCounts}/>
       <DisplayNumbers numbers={counts}/>
     </>
   );
