@@ -16,6 +16,17 @@ export default function CountItem ({
       >
         Remove
       </button>
+      <form>
+        <input 
+          type="text" 
+          placeholder="set another number"
+        />
+        <button
+          type="button"
+        >
+          Update
+        </button>
+      </form>
     </li>
   )
 }

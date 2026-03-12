@@ -32,6 +32,7 @@ export default function AddCountForm ({
         value={startNumber}
       />
       <button
+        type="button"
         style={{ marginRight: "5px" }}
       >
         Click to start adding numbers to the array
