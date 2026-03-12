@@ -14,7 +14,7 @@ export default function CountItem ({
         type="button"
         onClick={removeCount}
       >
-        Remove this item
+        Remove
       </button>
     </li>
   )
