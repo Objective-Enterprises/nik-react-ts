@@ -32,6 +32,8 @@ export default function AddCountForm ({
         value={startNumber}
       />
       <button
+        type="button"
+        onClick={() => addCount(Number(startNumber))}
         style={{ marginRight: "5px" }}
       >
         Click to start adding numbers to the array

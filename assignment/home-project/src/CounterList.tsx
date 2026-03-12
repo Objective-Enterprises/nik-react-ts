@@ -56,7 +56,11 @@ export default function CounterList() {
         incrementLast={incrementLast}
       />
       <ResetList resetCounts={resetCounts}/>
-      <DisplayNumbers numbers={counts}/>
+      <DisplayNumbers 
+        numbers={counts}
+        removeCount={removeCount}
+        updateCount={updateCount}
+      />
     </>
   );
 }
@@ -70,7 +74,7 @@ export default function CounterList() {
 // for each count there should be an INPUT and the BUTTON that says "Update"
 
 // hint:
-// a new CountItem component is required inside the DisplayNumber
+// a new CountItem component is required inside the DisplayNumbers
 
 // inheritance:
 // CounterList --> DisplayNumbers --> CountItem
