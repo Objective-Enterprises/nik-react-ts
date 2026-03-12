@@ -3,13 +3,15 @@ import { useState } from "react";
 interface CountItemProps {
   element: number
   removeCount: () => void;
+  updateCount: (newCount: number) => void;
 }
 
 export default function CountItem ({ 
   element, 
-  removeCount 
+  removeCount,
+  updateCount
 } : CountItemProps) {
-  const [specifiedNumber, setSpecifiedNumber] = useState('');
+  const [newNumber, setNewNumber] = useState('');
   return (
     <li>
       <span>{element}</span>
@@ -22,9 +24,9 @@ export default function CountItem ({
       <form onSubmit={
         e => {
           e.preventDefault();
-          if (specifiedNumber) {
-            // updateCount
-            setSpecifiedNumber('');
+          if (newNumber) {
+            updateCount(Number(newNumber))
+            setNewNumber('');
           } else {
             alert("no new number")
           }
@@ -33,8 +35,8 @@ export default function CountItem ({
         <input 
           type="text" 
           placeholder="set another number"
-          onChange={e => setSpecifiedNumber(e.target.value)}
-          value={specifiedNumber}
+          onChange={e => setNewNumber(e.target.value)}
+          value={newNumber}
         />
         <button
           type="button"

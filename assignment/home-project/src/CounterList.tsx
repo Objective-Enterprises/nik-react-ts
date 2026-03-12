@@ -59,6 +59,7 @@ export default function CounterList() {
       <DisplayNumbers 
         numbers={counts}
         removeCount={removeCount}
+        updateCount={updateCount}
       />
     </>
   );
