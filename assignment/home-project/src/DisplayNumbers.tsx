@@ -2,7 +2,7 @@ import CountItem from "./CountItem";
 
 interface DisplayNumberProps {
   numbers: number[];
-  removeCount: (number: number) => void;
+  removeCount: (indexToRemove: number) => void;
 }
 
 export default function DisplayNumbers({
