@@ -40,6 +40,7 @@ export default function CountItem ({
         />
         <button
           type="button"
+          onClick={() => updateCount(Number(newNumber))}
         >
           Update
         </button>
