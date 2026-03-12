@@ -16,7 +16,11 @@ export default function CountItem ({
       >
         Remove
       </button>
-      <form>
+      <form onSubmit={
+        e => {
+          e.preventDefault();
+        }
+      }>
         <input 
           type="text" 
           placeholder="set another number"
