@@ -2,6 +2,7 @@ import { useState } from "react";
 import DisplayNumbers from "./DisplayNumbers";
 import AddCountForm from "./AddCountForm";
 import ResetList from "./ResetList";
+import { CounterListContext } from "./counterListContext";
 
 export default function CounterList() {
   const [counts, setCounts] = useState<number[]>([]);
@@ -56,11 +57,11 @@ export default function CounterList() {
         incrementLast={incrementLast}
       />
       <ResetList resetCounts={resetCounts}/>
-      <DisplayNumbers 
-        numbers={counts}
-        removeCount={removeCount}
-        updateCount={updateCount}
-      />
+      <CounterListContext value={{ removeCount, updateCount }}>
+        <DisplayNumbers 
+          numbers={counts}
+        />
+      </CounterListContext>
     </>
   );
 }

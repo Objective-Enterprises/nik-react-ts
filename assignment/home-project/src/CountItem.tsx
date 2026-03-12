@@ -1,10 +1,9 @@
 import { useState } from "react";
+import { useCounterListContext } from "./counterListContext";
 
 interface CountItemProps {
   element: number
   index: number
-  removeCount: (indexToRemove: number) => void;
-  updateCount: (indexToUpdate: number, newCount: number) => void;
   // removeCount: () => void;
   // updateCount: (newCount: number) => void;
 }
@@ -12,16 +11,15 @@ interface CountItemProps {
 export default function CountItem ({ 
   element, 
   index,
-  removeCount,
-  updateCount
 } : CountItemProps) {
+  const value = useCounterListContext()
   const [newNumber, setNewNumber] = useState('');
   return (
     <li>
       <span>{element}</span>
       <button 
         type="button"
-        onClick={() => removeCount(index)}
+        onClick={() => value.removeCount(index)}
       >
         Remove
       </button>
@@ -29,7 +27,7 @@ export default function CountItem ({
         e => {
           e.preventDefault();
           if (newNumber) {
-            updateCount(index, Number(newNumber))
+            value.updateCount(index, Number(newNumber))
             // updateCount(Number(newNumber))
             setNewNumber('');
           } else {
