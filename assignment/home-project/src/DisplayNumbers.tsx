@@ -17,7 +17,6 @@ export default function DisplayNumbers({
         removeCount={() => removeCount(index)}
       />
     );
-      // return <li key={index}>{el}</li>;
   });
   return <ul>{liItems}</ul> 
 }
