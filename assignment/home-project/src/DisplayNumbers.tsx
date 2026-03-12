@@ -16,8 +16,11 @@ export default function DisplayNumbers({
       <CountItem 
         key={index}
         element={el}
-        removeCount={() => removeCount(index)}
-        updateCount={(newCount) => updateCount(index, newCount)}
+        index={index}
+        removeCount={removeCount}
+        updateCount={updateCount}
+        // removeCount={() => removeCount(index)}
+        // updateCount={(newCount) => updateCount(index, newCount)}
       />
     );
   });

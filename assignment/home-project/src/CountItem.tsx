@@ -2,12 +2,16 @@ import { useState } from "react";
 
 interface CountItemProps {
   element: number
-  removeCount: () => void;
-  updateCount: (newCount: number) => void;
+  index: number
+  removeCount: (indexToRemove: number) => void;
+  updateCount: (indexToUpdate: number, newCount: number) => void;
+  // removeCount: () => void;
+  // updateCount: (newCount: number) => void;
 }
 
 export default function CountItem ({ 
   element, 
+  index,
   removeCount,
   updateCount
 } : CountItemProps) {
@@ -17,7 +21,7 @@ export default function CountItem ({
       <span>{element}</span>
       <button 
         type="button"
-        onClick={removeCount}
+        onClick={() => removeCount(index)}
       >
         Remove
       </button>
@@ -25,7 +29,8 @@ export default function CountItem ({
         e => {
           e.preventDefault();
           if (newNumber) {
-            updateCount(Number(newNumber))
+            updateCount(index, Number(newNumber))
+            // updateCount(Number(newNumber))
             setNewNumber('');
           } else {
             alert("no new number")
@@ -39,8 +44,7 @@ export default function CountItem ({
           value={newNumber}
         />
         <button
-          type="button"
-          onClick={() => updateCount(Number(newNumber))}
+          type="submit"
         >
           Update
         </button>
