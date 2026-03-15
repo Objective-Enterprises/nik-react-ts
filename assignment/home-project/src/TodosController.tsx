@@ -1,12 +1,17 @@
 import AddTodoForm from "./AddTodoForm"
 import TodoList from "./TodoList"
+import { TodoContext } from "./TodosControllerContext"
 
 export default function TodosController () {
 
   return (
-    <>
-      <AddTodoForm />
-      <TodoList />
-    </>
+    <div
+      style={{"marginBottom": "250px"}}
+    >
+      <TodoContext value={undefined}>
+        <AddTodoForm/>
+        <TodoList />
+      </TodoContext>
+    </div>
   )
 }
