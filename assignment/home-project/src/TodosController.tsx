@@ -3,12 +3,12 @@ import TodoList from "./TodoList"
 import { TodoContext } from "./TodosControllerContext"
 
 export default function TodosController () {
-
+  const todos = ["Leon", "Ada"];
   return (
     <div
       style={{"marginBottom": "250px"}}
     >
-      <TodoContext value={undefined}>
+      <TodoContext value={{ todos }}>
         <AddTodoForm/>
         <TodoList />
       </TodoContext>

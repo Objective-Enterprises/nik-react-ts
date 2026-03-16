@@ -1,3 +1,7 @@
 import { createContext } from "react";
 
-export const TodoContext = createContext(undefined);
+interface TodoContextValue {
+  todos: string[];
+}
+
+export const TodoContext = createContext<TodoContextValue | undefined>(undefined);
