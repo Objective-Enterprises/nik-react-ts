@@ -4,7 +4,13 @@ import TodoList from "./TodoList"
 import { TodoContext } from "./TodosControllerContext"
 
 export default function TodosController () {
-  const [todos, setTodos] = useState<string[]>(["Leon", "Ada"])
+  const [todos, setTodos] = useState<string[]>([])
+
+  function addTodo(todoText: string) {
+    const newTodos = [...todos, todoText];
+    setTodos(newTodos);
+  }
+
   function removeTodo(indexToRemove: number) {
     const newTodos = todos.filter((_item, index) => {
       return index !== indexToRemove;
@@ -15,7 +21,11 @@ export default function TodosController () {
     <div
       style={{"marginBottom": "250px"}}
     >
-      <TodoContext value={{ todos: todos, removeTodo: removeTodo }}>
+      <TodoContext value={{ 
+        todos, 
+        removeTodo,
+        addTodo 
+      }}>
         <AddTodoForm/>
         <TodoList />
       </TodoContext>
