@@ -50,7 +50,8 @@ export default function CounterList() {
   }
 
   return (
-    <>
+    <div>
+      <h2>Counter app</h2>
       <AddCountForm
         addCount={addCount}
         incrementLast={incrementLast}
@@ -61,7 +62,7 @@ export default function CounterList() {
         removeCount={removeCount}
         updateCount={updateCount}
       />
-    </>
+    </div>
   );
 }
 

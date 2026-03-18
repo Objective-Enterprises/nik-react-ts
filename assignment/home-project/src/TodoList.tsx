@@ -16,5 +16,11 @@ export default function TodoList () {
       />
     )
   });
-  return <ul>{liItems}</ul>
+  return (
+    <ul
+     style={{ listStyleType: "none" }}
+    >
+      {liItems}
+    </ul> 
+  )
 }

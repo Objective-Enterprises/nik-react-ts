@@ -19,8 +19,11 @@ export default function TodosController () {
   }
   return (
     <div
-      style={{"marginBottom": "250px"}}
+      style={{
+        width: "450px"
+      }}
     >
+      <h2>TODO tracker</h2>
       <TodoContext value={{ 
         todos, 
         removeTodo,

@@ -3,10 +3,24 @@ import TodosController from './TodosController'
 
 function App() {
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        gap: "24px",
+        alignItems: "stretch"
+      }}
+    >
       <TodosController />
+      <div 
+        style={{
+          width: "1px",
+          borderRight: "10px solid #ccc",
+          // paddingRight: "24px",
+          marginRight: "24px"
+        }}
+      />
       <CounterList />
-    </>
+    </div>
   )
 }
 

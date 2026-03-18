@@ -16,13 +16,14 @@ export default function TodoItem ({
   }
   return (
     <li>
-      <span>{element}</span>
       <button
         type="button"
         onClick={() => contextValue.removeTodo(index)}
+        style={{ marginRight: "10px" }}
       >
         ➖ Remove
       </button>
+      <span>{element}</span>
     </li>
   )
 }
