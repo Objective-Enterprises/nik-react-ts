@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { TodoContext, useTodoContext } from "./TodoContext"
+import { useTodoContext } from "./TodoContext"
 
 interface TodoItemProps {
   element: string
