@@ -1,12 +1,9 @@
 import { useContext } from "react";
-import { TodoContext } from "./TodosControllerContext";
+import { TodoContext, useTodoContext } from "./TodoContext";
 import TodoItem from "./TodoItem";
 
 export default function TodoList () { 
-  const contextValue = useContext(TodoContext);
-  if (!contextValue) {
-    return <p>No todos available</p>
-  }
+  const contextValue = useTodoContext();
   const liItems = contextValue.todos.map((element, index) => {
     return (
       <TodoItem

@@ -1,12 +1,8 @@
 import { useContext, useState } from "react"
-import { TodoContext } from "./TodosControllerContext"
+import { TodoContext, useTodoContext } from "./TodoContext"
 
 export default function AddTodoForm () {
-  const contextValue = useContext(TodoContext);
-  if (!contextValue) {
-    throw new Error("💥 AddTodoForm can't access the context");
-  }
-  const addTodo = contextValue.addTodo;
+  const { addTodo } = useTodoContext();
   const [todoText, setTodoText] = useState("");
   function checkTodoAndAdd() {
     if (todoText.length === 0) {

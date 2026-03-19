@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddTodoForm from "./AddTodoForm"
 import TodoList from "./TodoList"
-import { TodoContext } from "./TodosControllerContext"
+import { TodoContext } from "./TodoContext"
 
 export default function TodosController () {
   const [todos, setTodos] = useState<string[]>([])

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { TodoContext } from "./TodosControllerContext"
+import { TodoContext, useTodoContext } from "./TodoContext"
 
 interface TodoItemProps {
   element: string
@@ -10,10 +10,7 @@ export default function TodoItem ({
   element,
   index
 }: TodoItemProps) {
-  const contextValue = useContext(TodoContext);
-  if (!contextValue) {
-    throw new Error("💥 TodoItem can't access the context");
-  }
+  const contextValue = useTodoContext();
   return (
     <li>
       <button
