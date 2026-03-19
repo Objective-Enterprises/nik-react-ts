@@ -1,5 +1,5 @@
-import { useContext, useState } from "react"
-import { TodoContext, useTodoContext } from "./TodoContext"
+import { useState } from "react"
+import { useTodoContext } from "./TodoContext"
 
 export default function AddTodoForm () {
   const { addTodo } = useTodoContext();
