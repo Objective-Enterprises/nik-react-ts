@@ -1,4 +1,5 @@
 import { useBugContext } from "./BugContext"
+import RemoveBugButton from "./RemoveBugButton";
 
 interface BugItemProps {
   element: string
@@ -9,17 +10,11 @@ export default function BugItem ({
   element,
   index
 }: BugItemProps) {
-  const contextValue = useBugContext();
-
   return (
     <li>
-      <button
-        type="button"
-        onClick={() => contextValue.removeBug(index)}
-        style={{ marginRight: "10px" }}
-      >
-        ➖ Remove
-      </button>
+      <RemoveBugButton 
+        indexToRemove={index}
+      />
       <span>{element}</span>
     </li>
   )
