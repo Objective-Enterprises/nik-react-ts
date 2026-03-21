@@ -1,13 +1,13 @@
 import { useState } from "react";
 import AddBugForm from "./AddBugForm";
-import { BugContext } from "./BugContext";
+import { BugContext, type Bug } from "./BugContext";
 import BugList from "./BugList";
 
 export default function BugController () {
-  const [bugs, setBugs] = useState<string[]>([])
+  const [bugs, setBugs] = useState<Bug[]>([])
 
   function addBug (bugText: string) {
-    const newBugs = [...bugs, bugText];
+    const newBugs = [...bugs, { text: bugText, active: false }];
     setBugs(newBugs);
   }
 
@@ -18,12 +18,25 @@ export default function BugController () {
     setBugs(newBugs)
   }
 
+  function toggleBug (indexToToggle: number) {
+    const newBugs = bugs.map((item, index) => {
+      if (indexToToggle !== index) {
+        return item
+      }
+      const updatedBug = {...item, active: !item.active};
+      return updatedBug
+    })
+
+    setBugs(newBugs);
+  }
+
   return (
     <div>
       <BugContext value={{
         bugs,
         addBug,
-        removeBug
+        removeBug,
+        toggleBug
       }}>
         <AddBugForm />
         <BugList />

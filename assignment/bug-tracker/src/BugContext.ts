@@ -1,9 +1,15 @@
 import { createContext, useContext } from "react";
 
+export interface Bug {
+  text: string,
+  active: boolean
+}
+
 interface BugContextValue {
-  bugs: string[];
+  bugs: Bug[];
   addBug: (bugText: string) => void;
-  removeBug: (indexToRemove:number) => void;
+  removeBug: (indexToRemove: number) => void;
+  toggleBug: (indexToToggle: number) => void;
 }
 
 export const BugContext = createContext<BugContextValue | undefined>(undefined)
