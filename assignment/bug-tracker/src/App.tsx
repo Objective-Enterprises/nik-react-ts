@@ -11,14 +11,3 @@ function App() {
 }
 
 export default App
-
-
-/*
-
-- AddBugForm
-- BugList
-  - BugItem
-    - ToggleActiveButton
-    - RemoveBugButton
-
-*/
