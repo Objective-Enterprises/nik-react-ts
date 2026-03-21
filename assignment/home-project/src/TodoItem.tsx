@@ -1,7 +1,7 @@
-import { useTodoContext } from "./TodoContext"
+import { useTodoContext, type Todo } from "./TodoContext"
 
 interface TodoItemProps {
-  element: string
+  element: Todo
   index: number
 }
 
@@ -19,7 +19,18 @@ export default function TodoItem ({
       >
         ➖ Remove
       </button>
-      <span>{element}</span>
+      <span
+        style={{ textDecoration: element.done ? "line-through" : "none" }}
+      >
+        {element.text}
+      </span>
+      <button
+        type="button"
+        onClick={() => contextValue.updateTodo(index)}
+        style={{ marginLeft: "10px" }}
+      >
+        Done/Undone
+      </button>
     </li>
   )
 }

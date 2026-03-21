@@ -1,13 +1,13 @@
 import { useState } from "react";
 import AddTodoForm from "./AddTodoForm"
 import TodoList from "./TodoList"
-import { TodoContext } from "./TodoContext"
+import { TodoContext, type Todo } from "./TodoContext"
 
 export default function TodosController () {
-  const [todos, setTodos] = useState<string[]>([])
+  const [todos, setTodos] = useState<Todo[]>([])
 
   function addTodo(todoText: string) {
-    const newTodos = [...todos, todoText];
+    const newTodos = [...todos, { text: todoText, done: false }];
     setTodos(newTodos);
   }
 
@@ -16,6 +16,18 @@ export default function TodosController () {
       return index !== indexToRemove;
     })
     setTodos(newTodos)
+  }
+
+  function updateTodo(indexToUpdate: number) {
+    const newTodos = todos.map((item, index) => {
+      if (indexToUpdate !== index) {
+        return item
+      }
+      const updatedTodo = {...item, done: !item.done};
+      return updatedTodo
+    })
+
+    setTodos(newTodos);
   }
   return (
     <div
@@ -27,7 +39,8 @@ export default function TodosController () {
       <TodoContext value={{ 
         todos, 
         removeTodo,
-        addTodo 
+        addTodo,
+        updateTodo
       }}>
         <AddTodoForm/>
         <TodoList />
