@@ -11,11 +11,19 @@ export default function BugController () {
     setBugs(newBugs);
   }
 
+  function removeBug (indexToRemove: number) {
+    const newBugs = bugs.filter((_item, index) => {
+      return index !== indexToRemove;
+    })
+    setBugs(newBugs)
+  }
+
   return (
     <div>
       <BugContext value={{
         bugs,
-        addBug
+        addBug,
+        removeBug
       }}>
         <AddBugForm />
         <BugList />

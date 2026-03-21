@@ -13,7 +13,12 @@ export default function BugItem ({
 
   return (
     <li>
-      <button>
+      <button
+        type="button"
+        onClick={() => contextValue.removeBug(index)}
+        style={{ marginRight: "10px" }}
+      >
+        ➖ Remove
       </button>
       <span>{element}</span>
     </li>
