@@ -15,7 +15,6 @@ function App() {
         style={{
           width: "1px",
           borderRight: "10px solid #ccc",
-          // paddingRight: "24px",
           marginRight: "24px"
         }}
       />

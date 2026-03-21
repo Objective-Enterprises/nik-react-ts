@@ -1,9 +1,15 @@
 import { createContext, useContext } from "react";
 
+export interface Todo {
+  text: string,
+  done: boolean
+}
+
 interface TodoContextValue {
-  todos: string[];
+  todos: Todo[];
   removeTodo: (index: number) => void;
   addTodo: (todoText: string) => void;
+  updateTodo: (index: number) => void;
 }
 
 export const TodoContext = createContext<TodoContextValue | undefined>(undefined);
