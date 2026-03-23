@@ -1,6 +1,5 @@
-import { type Bug } from "./BugContext"
-import RemoveBugButton from "./RemoveBugButton";
-import ToggleActiveButton from "./ToggleActiveButton";
+import { type Bug } from "./BugContext";
+import BugDetails from "./BugDetails";
 
 interface BugItemProps {
   element: Bug
@@ -13,18 +12,10 @@ export default function BugItem ({
 }: BugItemProps) {
   return (
     <li>
-      <RemoveBugButton 
-        indexToRemove={index}
-      />
-      <ToggleActiveButton
+      <BugDetails
         element={element}
-        indexToToggle={index}
+        index={index}
       />
-      <span
-        style={{ color: element.active ? "red" : "rgb(192, 192, 192)" }}
-      >
-        {element.text}
-      </span>
     </li>
   )
 }
