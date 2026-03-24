@@ -1,9 +1,10 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 import doomGuy from "./assets/doom_face.png"
-import Home from "./Home"
-import About from "./About"
-import Contact from "./Contact"
 import "./App.css"
+import HomePage from "./HomePage"
+import AboutPage from "./AboutPage"
+import ContactPage from "./ContactPage"
+import UsersPage from "./UsersPage"
 
 function App() {
   return (
@@ -20,14 +21,16 @@ function App() {
         width="25 rem"
       />
       <div>
-        <Link to="/">Home</Link> | 
-        <Link to="/about">About</Link> |
-        <Link to="/contact">Contact</Link>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/about">About</Link> |{" "}
+        <Link to="/contact">Contact</Link> |{" "}
+        <Link to="/users">Users</Link>
       </div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/users" element={<UsersPage />} />
       </Routes>
     </BrowserRouter>
   )

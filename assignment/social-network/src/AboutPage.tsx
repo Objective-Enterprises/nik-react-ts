@@ -1,7 +1,7 @@
 
 import doomFriends from "./assets/doom_friends.gif"
 
-export default function About () {
+export default function AboutPage () {
   return (
     <>
       <h2>ABOUT</h2>

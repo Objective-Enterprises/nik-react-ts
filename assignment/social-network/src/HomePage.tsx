@@ -1,4 +1,4 @@
-export default function Home () {
+export default function HomePage () {
   return (
     <>
       <h2>The government blocked your fav social media?</h2>
