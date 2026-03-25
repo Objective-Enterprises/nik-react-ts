@@ -5,33 +5,57 @@ import HomePage from "./HomePage"
 import AboutPage from "./AboutPage"
 import ContactPage from "./ContactPage"
 import UsersPage from "./UsersPage"
+import UserPage from "./UserPage"
+import { UserContext, type User } from "./UserContext"
+import { useState } from "react"
 
 function App() {
+  const [users, setUsers] = useState<User[]>([]);
+
+  function addUser (userName: string) {
+    const newUsers = [...users, { userName: userName, job: "none", bio: "unknown"}];
+    setUsers(newUsers);
+  }
+
+  function removeUser (indexToRemove: number) {
+    const newUsers = users.filter((_element, index) => {
+      return index !== indexToRemove;
+    })
+    setUsers(newUsers);
+  }
+  
   return (
     <BrowserRouter>
-      <img 
-        src={doomGuy} alt="the Doom Guy face with yellow eyes" 
-        width="25 rem"
-      />
-      <h1 className="titleHeader">
-        FRIENDS IN DOOM
-      </h1>
-      <img 
-        src={doomGuy} alt="the Doom Guy face with yellow eyes" 
-        width="25 rem"
-      />
-      <div>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/about">About</Link> |{" "}
-        <Link to="/contact">Contact</Link> |{" "}
-        <Link to="/users">Users</Link>
-      </div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/users" element={<UsersPage />} />
-      </Routes>
+      <UserContext value={{
+        users,
+        addUser,
+        removeUser
+      }}>
+        <img 
+          src={doomGuy} alt="the Doom Guy face with yellow eyes" 
+          width="25 rem"
+        />
+        <h1 className="titleHeader">
+          FRIENDS IN DOOM
+        </h1>
+        <img 
+          src={doomGuy} alt="the Doom Guy face with yellow eyes" 
+          width="25 rem"
+        />
+        <div>
+          <Link to="/">Home</Link> |{" "}
+          <Link to="/about">About</Link> |{" "}
+          <Link to="/contact">Contact</Link> |{" "}
+          <Link to="/users">Users</Link>
+        </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/users/:index" element={<UserPage />} />
+        </Routes>
+      </UserContext>
     </BrowserRouter>
   )
 }

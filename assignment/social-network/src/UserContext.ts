@@ -1,8 +1,15 @@
 import { createContext, useContext } from "react";
 
+export interface User {
+  userName: string,
+  job: string,
+  bio: string
+}
+
 interface UserContextValue {
-  users: string[];
+  users: User[];
   addUser: (userName: string) => void;
+  removeUser: (indexToRemove: number) => void;
 }
 
 export const UserContext = createContext<UserContextValue | undefined>(undefined)

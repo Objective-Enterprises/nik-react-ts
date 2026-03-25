@@ -1,19 +1,25 @@
 import { useState } from "react";
+import { useUserContext } from "./UserContext";
 
 export default function AddUserForm () {
+  const { addUser } = useUserContext();
   const [userName, setUserName] = useState("");
-  const [users, setUsers] = useState([""]);
-  function addUser (userName: string) {
-    const newUsers = [...users, userName];
-    setUsers(newUsers);
-    setUserName("");
+
+  function checkUserAndAdd () {
+    if (userName.length === 0) {
+      alert("⚠️ Type in the name to add a user")
+    } else {
+      addUser(userName);
+      setUserName("");
+    }
   }
+  
   return (
     <>
       <form onSubmit={
         e => {
           e.preventDefault();
-          addUser(userName);
+          checkUserAndAdd();
         }
       }>
         <input 
