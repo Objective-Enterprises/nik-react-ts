@@ -9,6 +9,7 @@ export default function UserList () {
         key={index}
         element={element}
         index={index}
+        variant="listItem"
       />
     )
   })

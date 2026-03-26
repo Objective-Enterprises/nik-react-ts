@@ -1,20 +1,16 @@
 import RemoveUser from "./RemoveUser"
-import type { User } from "./UserContext"
-import UserDetails from "./UserDetails"
+import UserDetails, { type UserDetailsProps } from "./UserDetails"
 
-interface UserListItemDetails {
-  element: User
-  index: number
-}
 export default function UserListItem ({
   element,
   index
-}: UserListItemDetails) {
+}: UserDetailsProps) {
   return (
     <li>
       <UserDetails 
         element={element}
         index={index}
+        variant="listItem"
       />
       <RemoveUser 
         indexToRemove={index}
