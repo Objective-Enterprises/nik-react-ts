@@ -10,6 +10,10 @@ interface UserContextValue {
   users: User[];
   addUser: (userName: string) => void;
   removeUser: (indexToRemove: number) => void;
+  updateUser: (
+    indexToUpdate: number,
+    user: Partial<User>
+  ) => void;
 }
 
 export const UserContext = createContext<UserContextValue | undefined>(undefined)

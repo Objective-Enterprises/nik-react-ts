@@ -23,13 +23,30 @@ function App() {
     })
     setUsers(newUsers);
   }
+
+  function updateUser(
+    indexToUpdate: number,
+    updatedFields: Partial<User>
+  ) {
+    const newUsers = users.map((user, index) => {
+      if (indexToUpdate === index) {
+        return {
+          ...user,
+          ...updatedFields
+        }
+      }
+      return user;
+    })
+    setUsers(newUsers);
+  }
   
   return (
     <BrowserRouter>
       <UserContext value={{
         users,
         addUser,
-        removeUser
+        removeUser,
+        updateUser
       }}>
         <img 
           src={doomGuy} alt="the Doom Guy face with yellow eyes" 
