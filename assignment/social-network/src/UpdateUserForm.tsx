@@ -6,7 +6,6 @@ interface UpdateUserFormProps {
   index: number
 }
 export default function UpdateUserForm ({
-  user,
   index
 }: UpdateUserFormProps) {
   const { updateUser } = useUserContext();
@@ -21,7 +20,7 @@ export default function UpdateUserForm ({
       e => {
         e.preventDefault();
         
-        const updatedFields: Partial<User> = {};
+        const updatedFields: User = {};
 
         if (formData.userName.trim() !== "") {
           updatedFields.userName = formData.userName;

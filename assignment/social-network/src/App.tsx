@@ -26,7 +26,7 @@ function App() {
 
   function updateUser(
     indexToUpdate: number,
-    updatedFields: Partial<User>
+    updatedFields: User
   ) {
     const newUsers = users.map((user, index) => {
       if (indexToUpdate === index) {

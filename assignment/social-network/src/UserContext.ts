@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
 export interface User {
-  userName: string,
-  job: string,
-  bio: string
+  userName?: string,
+  job?: string,
+  bio?: string
 }
 
 interface UserContextValue {
@@ -12,7 +12,7 @@ interface UserContextValue {
   removeUser: (indexToRemove: number) => void;
   updateUser: (
     indexToUpdate: number,
-    user: Partial<User>
+    user: User
   ) => void;
 }
 
