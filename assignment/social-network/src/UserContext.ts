@@ -1,14 +1,18 @@
 import { createContext, useContext } from "react";
 
 export interface User {
-  userName?: string,
-  job?: string,
-  bio?: string
+  userName: string,
+  job: string,
+  bio: string
 }
 
 interface UserContextValue {
   users: User[];
-  addUser: (userName: string) => void;
+  addUser: (
+    userName: string,
+    userJob: string,
+    userBio?: string
+  ) => void;
   removeUser: (indexToRemove: number) => void;
   updateUser: (
     indexToUpdate: number,

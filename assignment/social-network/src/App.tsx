@@ -12,8 +12,16 @@ import { useState } from "react"
 function App() {
   const [users, setUsers] = useState<User[]>([]);
 
-  function addUser (userName: string) {
-    const newUsers = [...users, { userName: userName, job: "none", bio: "unknown"}];
+  function addUser (
+    userName: string,
+    userJob: string,
+    userBio?: string
+  ) {
+    const newUsers = [...users, { 
+      userName: userName, 
+      job: userJob, 
+      bio: userBio ?? "unknown" // ?? only checks if the value is NOT undefined or NOT null.
+    }];
     setUsers(newUsers);
   }
 

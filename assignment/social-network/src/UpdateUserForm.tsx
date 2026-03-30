@@ -6,41 +6,28 @@ interface UpdateUserFormProps {
   index: number
 }
 export default function UpdateUserForm ({
+  user,
   index
 }: UpdateUserFormProps) {
   const { updateUser } = useUserContext();
   const [formData, setFormData] = useState({
-    userName: "",
-    job: "",
-    bio: ""
+    userName: user.userName,
+    job: user.job,
+    bio: user.bio
   });
 
   return (
     <form onSubmit={
       e => {
         e.preventDefault();
-        
-        const updatedFields: User = {};
 
-        if (formData.userName.trim() !== "") {
-          updatedFields.userName = formData.userName;
-        }
+        updateUser(index, formData);
 
-        if (formData.job.trim() !== "") {
-          updatedFields.job = formData.job;
-        }
-
-        if (formData.bio.trim() !== "") {
-          updatedFields.bio = formData.bio;
-        }
-
-        updateUser(index, updatedFields);
-
-        setFormData({
-          userName: "",
-          job: "",
-          bio: ""
-        });
+        // setFormData({
+        //   userName: "",
+        //   job: "",
+        //   bio: ""
+        // });
       }
     }>
       <button type="submit">🔽 Apply updates 🔽</button>
