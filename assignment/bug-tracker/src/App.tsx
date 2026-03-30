@@ -88,4 +88,6 @@ App
     - Job
     - Bio
     - <UpdateUserForm />
+
+BONUS: try persisting the user data in local storage.
 */

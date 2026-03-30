@@ -1,0 +1,23 @@
+.inlineHeading {
+  display: inline-block;
+}
+
+.titleHeader {
+  display: inline-block;
+  color: #7a0000;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-size: cover; 
+  background-image: url('./assets/more_than_doom_font.webp');
+  vertical-align: sub; 
+}
